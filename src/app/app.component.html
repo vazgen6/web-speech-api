@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Web Speech API</h1>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Textarea</mat-label>
+      <textarea matInput formControlName="text" rows="10"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Choose voice</mat-label>
+      <mat-select formControlName="voice">
+        <mat-option *ngFor="let voice of voices" [value]="voice">
+          {{ voice.name }} {{ voice.lang }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <label>Pitch:</label>
+    <mat-slider
+      [thumbLabel]="true"
+      formControlName="pitch"
+      min="0"
+      max="2"
+      step="1"
+    >
+    </mat-slider>
+
+    <label>Speed:</label>
+    <mat-slider
+      [thumbLabel]="true"
+      formControlName="rate"
+      min="0.25"
+      max="2"
+      step="0.25"
+    >
+    </mat-slider>
+
+    <button mat-raised-button color="primary" (click)="speak()">Speak</button>
+  </form>
+  <img src="assets/michael-scott.png" alt="michael-scott">
+</div>
